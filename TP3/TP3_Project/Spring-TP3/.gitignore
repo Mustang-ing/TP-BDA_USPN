@@ -1,0 +1,76 @@
+# ================================
+# General
+# ================================
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# ================================
+# Java / Spring Boot
+# ================================
+
+# Maven build
+/target/
+
+# Gradle build
+/build/
+
+# Compiled class files
+*.class
+
+# Maven Wrapper
+.mvn/
+!**/mvn/wrapper/maven-wrapper.jar
+
+# Spring Boot devtools
+spring-boot-devtools.properties
+
+# Environment files
+.env
+
+# ================================
+# Eclipse specific
+# ================================
+
+.project
+.classpath
+.settings/
+bin/
+
+# ================================
+# IntelliJ IDEA specific
+# ================================
+
+.idea/
+*.iml
+*.iws
+out/
+
+# IntelliJ compiler cache
+/out/
+
+# IntelliJ Module and Workspace files
+*.ipr
+*.iws
+
+# ================================
+# VS Code (optional)
+# ================================
+
+.vscode/
+
+# ================================
+# Node.js (optional frontend folder)
+# ================================
+
+node_modules/
+
