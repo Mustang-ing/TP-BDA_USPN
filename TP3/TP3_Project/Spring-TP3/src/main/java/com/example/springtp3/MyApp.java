@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 //On définit une API Rest via cette annotation
 @RestController
 public class MyApp {
 
-	public static Collection<Etudiant> liste = new ArrayList();
+	public static ArrayList<Etudiant> liste = new ArrayList();
 
 	static
 	{
@@ -25,6 +26,20 @@ public class MyApp {
 	{
 		return liste;
 	}
+	
+	@GetMapping(value = "/getEtudiant")
+	public Etudiant getEtudiant(int identifiant)
+	{
+		return liste.get(identifiant);
+	}
+	
+	@PostMapping(value = "/addEtudiant")
+	public Etudiant addEtudiant(Etudiant etudiant)
+	{
+		liste.add(etudiant);
+		return etudiant;
+	}
+	
 	//Implémentation des méthodes HTTP. La value précise le chemin de l'URL.
 	@GetMapping(value = "/b")
 	public String Bonjour()

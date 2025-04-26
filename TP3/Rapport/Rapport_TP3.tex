@@ -233,6 +233,53 @@ Enfin, on fait une nouvelle méthode avec l'entrypoint \textbf{/list} qui retour
 \end{figure}
 
 
+\subsection{Affichage d'un étudiant via son identifiant}
+On peut retourner un éléve en fonction de son identifiant. En faisant, une nouvelle méthode \textbf{getEtudiant}, on doit préciser l'id de l'étudiant via l'URL (Comme auparvant). Si l'étudiant existe, on peut voir ses informations sinon, il y a une erreur.
+
+
+
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P6_A.png}
+\captionof{figure}{Etudiant 0}
+\label{fig:figure}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P6_B.png}
+\captionof{figure}{Etudiant introuvable}
+\label{fig:figure}
+\vspace{1cm}
+\end{minipage}
+
+\subsection{Ajouter des étudiants}
+
+Rappel des type de requête HTTP : 
+\begin{itemize}
+	\item GET : Renvoie une ressources
+	\item POST : Générer une ressources
+	\item PUT : Modifier une ressources 
+	\item DELETE : Supprimer une ressources
+\end{itemize}
+
+\textbf{Remarque :} C'est une convention, on peut tout à fait faire le travail de l'une avec l'autre.\newline
+
+
+On va utiliser \textbf{POST}, pour faire une méthode pour ajouter un étudiant dans la liste. On commence à écrire une méthode qui prend en argument un étudiant. Les attributs de l'étudiant sont directement passé dans l'URL. L'entrypoint est \textbf{addEtudiant}. Via SoapUI, on peut ajouter un étudiant.
+
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P7_A.png}
+\captionof{figure}{Ajout de l'étudiant 5}
+\label{fig:figure}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P7_B.png}
+\captionof{figure}{Liste de tous les étudiants}
+\label{fig:figure}
+\vspace{1cm}
+\end{minipage}
+
+
 
 \section{Pourquoi cela ne marche sur IntelliJ ?}
 
