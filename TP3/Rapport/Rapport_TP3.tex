@@ -1,0 +1,185 @@
+\documentclass{rapport}
+
+
+\usepackage{lipsum}
+\usepackage{tikz} 
+\usepackage{listings}
+\usepackage{amsfonts} 
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[footnote]{acronym}
+\usepackage{fancyhdr}
+\usepackage{helvet}
+\usepackage{svg}
+\usepackage{float}      % Add this to your preamble
+\usepackage{placeins}   % Ensures floats do not cross section boundaries
+\usepackage{caption}
+
+
+
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{\bfseries\leftmark}
+\cfoot{\bfseries\thepage}
+\setlength{\headheight}{14.7pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\renewcommand{\thesection}{\arabic{section}} % Sections: 1, 2, 3...
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}} % Subsections: 1.1, 1.2...
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}} % Subsubsections: 1.1.1, 1.1.2...
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=single,
+    captionpos=b,
+}
+
+\title{Rapport TP2} %Titre du fichier
+
+\doublespacing 
+\begin{document}
+\lhead{Base de données avancée \textbf{- \titre}}
+
+%----------- Informations du Rapport --------
+\logo{logos/logo2.png}
+\unif{}
+\titre{Rapport TP3 - Dévelloppement d'un micro-services }
+\sujet{ Base de données avancée}
+%----------- Inserer l'image-logo içi---------
+\enseignant{ Samir \textsc{Youssef} } %Nom de l'enseignant
+
+
+\eleve{ Aïssa \textsc{Pansan} \\ 11933936}
+
+\newpage
+
+%----------- Initialisation -------------------
+
+\renewcommand*\contentsname{Sommaire}       
+\makenomenclature %Afficher les marges
+\fairepagedegarde %Créer la page de garde
+
+
+%------------ Corps du rapport ----------------
+
+
+
+%------ Proto intégration image -------
+\iffalse
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/Config_1_3.png}
+    \caption{Configuration}
+\end{figure}
+\FloatBarrier
+
+%Minipage 
+
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P1/Q4_a1.png}
+\captionof{figure}{Tentative de lister le contenu}
+\label{fig:figure}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P1/Q4_b.png}
+\captionof{figure}{Listing avec \textbf{info2}}
+\label{fig:figure}
+\vspace{1cm}
+\end{minipage}
+
+
+\fi
+
+\section{Initialisation}
+
+Pour réaliser une micro-service en SpringBoot, on peut utiliser plusieurs IDE comme \textbf{IntelliJIdea}. Cela dit, cela n'a pas marché pour (malgré pluseurs essai, je vous le promets). \textbf{Dans la suite de ce rapport, l'ensemble des opérations seront effectué dans l'IDE Eclipse}.\newline
+
+Les premières êtapes sont les même que celle de la vidéo, on peut les faire sur \textbf{IntelliJ} à la différence du choix des versions.
+
+\begin{itemize}
+	\item On choisit la version 21 de Java.
+	\item On utilise le packagink Jar, pour déployer sans un serveur d'application. C'est comme un zip. 
+	\item On doit utiliser la dépendance \textbf{Spring Web}, on peut enfin valider.
+\end{itemize}
+Remarque :  Un projet Spring est un projet Maven\newline
+
+Ensuite, en ligne de commande. On va initialiser la projet Maven via la commande \textbf{mvn install} 
+
+C'est à partir de cette êtape, que l'on utilisera Eclipse. 
+
+
+\section{Lancement}
+
+SpringBot intègre directement Tomcat. On n'a pas besoin de paramétré l'IDE pour lancer Tomcat, ni même l'installer. On va lancer notre application \textbf{src/main/java/com/example/}. On accède à l'application via localhost sur le port 8080
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P1.png}
+    \caption{Illustration du lancement de SpringBoot}
+\end{figure}
+
+Les micros-services doivent être écrit au niveau de \textbf{com.example.[Nom_projet]}. 
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P2_A.png}
+    \caption{Localisation dans Eclipse}
+\end{figure}
+
+
+
+
+\section{Pourquoi cela ne marche sur IntelliJ ?}
+
+J'ai décidé de basculer sur 
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
