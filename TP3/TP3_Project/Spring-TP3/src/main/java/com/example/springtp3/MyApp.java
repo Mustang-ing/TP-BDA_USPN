@@ -3,8 +3,10 @@ package com.example.springtp3;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 //On définit une API Rest via cette annotation
@@ -38,6 +40,20 @@ public class MyApp {
 	{
 		liste.add(etudiant);
 		return etudiant;
+	}
+	
+	@PutMapping(value = "/modifierEtudiant")
+	public void modifierEtudiant(int id, String nom)
+	{
+		liste.get(id).setNom(nom);
+		
+	}
+	
+	@DeleteMapping(value = "deleteEtudiant")
+	public String deleteEtudiant(int id)
+	{
+		liste.remove(id);
+		return "L'étudiant d'id " + id + "a été supprimer";
 	}
 	
 	//Implémentation des méthodes HTTP. La value précise le chemin de l'URL.
