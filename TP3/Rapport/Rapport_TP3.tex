@@ -127,7 +127,7 @@ Ensuite, en ligne de commande. On va initialiser la projet Maven via la commande
 C'est à partir de cette êtape, que l'on utilisera Eclipse. 
 
 
-\section{Lancement}
+\section{Écriture d'une première API REST}
 
 SpringBot intègre directement Tomcat. On n'a pas besoin de paramétré l'IDE pour lancer Tomcat, ni même l'installer. On va lancer notre application \textbf{src/main/java/com/example/}. On accède à l'application via localhost sur le port 8080
 
@@ -145,7 +145,39 @@ Les micros-services doivent être écrit au niveau de \textbf{com.example.[Nom_p
     \caption{Localisation dans Eclipse}
 \end{figure}
 
+On définit une nouvelle app via deux annotations primordiales.
+\begin{itemize}
+	\item \textbf{@RestController} : Pour définir une API REST. Elle se met au niveau de la nouvelle classe
+	\item \textbf{@GetMapping(value = "/bn")} : Comme une Servlet. On définit la HTTP Response en précisant l'URL d'accès. Chaque méthode peut représenter une page.
+\end{itemize}
 
+\textcolor{red}{\textbf{Attention} : Il faut arrêter la SpringBootApplication pour appliquer les changements. Relancer l'app, alors quelle est déjà lancé ne marchera pas. Il faudra relancer Eclipse pour arreter l'app une bonne fois pour toutes. Pour eviter tout ça arrete l'app via la console.}
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P2_C.png}
+    \caption{Arret de l'application via la console}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P2_D.png}
+    \caption{Résultats}
+\end{figure}
+\subsection{Changer le port d'écoute de l'application}
+
+Pour changer le port d'écoute. On modifie le fichier dans \textbf{src/main/ressources/main.properties} et on écrit : \textbf{server.port=9999}
+\end{figure}
+
+\subsection{Afficher les informations d'un objet}
+
+On peut afficher les attributs d'un objet en retournant directement l'objet d'un classe dans une méthode qu'on mappe. L'affichage se fera sous format JSON.
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P3.png}
+    \caption{Résultats}
+\end{figure}
 
 
 \section{Pourquoi cela ne marche sur IntelliJ ?}
