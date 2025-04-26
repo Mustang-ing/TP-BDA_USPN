@@ -1,5 +1,6 @@
 /TP2
 /TP3/Video
-/TP3/Rapport
+/TP3/Rapport/*
+!/TP3/Rapport/Rapport_TP3.tex
 /TP4
 
