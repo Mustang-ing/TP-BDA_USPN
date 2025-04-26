@@ -180,6 +180,59 @@ On peut afficher les attributs d'un objet en retournant directement l'objet d'un
     \caption{Résultats}
 \end{figure}
 
+\section{Tester les micro-services}
+
+Plusieurs outils existent pour tester un micro-services (PostMan,DeepLogin,SoapUI). Dans notre cas, je vais utiliser SOAPUI, car il est déjà présent dans ma machine.\newline
+
+Pour tester un micro-services. On va écrire un fonction avec l'entrypoint(\textbf{/somme} qui retourn la somme de deux nombres fourni en paramètre. Au niveau de l'URL, on doit passé les deux paramètre comme-ci : \textbf{/somme?a=1&b=1}. On peut tester manuellement via le navigateur, mais SOAPUI nous permer de le faire via une interface graphique.
+
+\subsection{Etape 1 : Choisir un projet REST}
+
+L'URI est le début de l'URL, c'est à dire : http://localhost
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P4_A.png}
+    \caption{On ne précise pas encore le port}
+\end{figure}
+
+\subsection{Etape 2 : Tester}
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P4_B.png}
+    \caption{Interface SoapUI}
+\end{figure}
+
+Il y a trois champs important dans SoapUI :
+\begin{itemize}
+	\item \textbf{Entrypoint :} Le point d'entrée de l'app. C'est le début de l'URL
+	\item \textbf{Ressources : } C'est la page spécifique auquel on veut accéder
+	\item \textbf{Parameters : } Les paramètre à envoyer (HTTP Response)
+\end{itemize}
+On peut sauvegarder au fur et à mesure pour garder les paramètres de la requêtes.
+
+\textcolor{red}{\textbf{Remarque} : Les requêtes sont en GET}
+
+\section{Persistance des informations via une ArrayList}
+
+Une étape phare d'une API REST est le fait de sauvegarder de manière pérenne les informations. Pour le moment, on va utiliser une collection d'étudiant statique qui sera stocké dans une ArrayList.\newline
+\begin{lstlisting}
+public static Collection<Etudiant> liste = new ArrayList();
+\end{lstlisting}
+
+On va ensuite ajouter au fur et à mesure des étudiants dans la liste via \textbf{liste.add( )}. Tout se fait en static.
+
+Enfin, on fait une nouvelle méthode avec l'entrypoint \textbf{/list} qui retourne la collection. 
+
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P5.png}
+    \caption{Affichage des éleves en JSON}
+\end{figure}
+
+
 
 \section{Pourquoi cela ne marche sur IntelliJ ?}
 
