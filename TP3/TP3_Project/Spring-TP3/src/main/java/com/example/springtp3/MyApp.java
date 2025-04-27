@@ -49,7 +49,7 @@ public class MyApp {
 		
 	}
 	
-	@DeleteMapping(value = "deleteEtudiant")
+	@DeleteMapping(value = "/deleteEtudiant")
 	public String deleteEtudiant(int id)
 	{
 		liste.remove(id);

@@ -308,7 +308,15 @@ On peut dans le même esprit écrire des méthodes pour modifier et supprimer un
 \end{minipage}
 
 
-\textcolor{red}{\textbf{Remarque} : Les changements sont persistant selon la durée de vie du processus du SpringBootApplication. Son arrêt entraine la suppression de tout ce qu'il y a dans la RAM}
+\textcolor{red}{\textbf{Remarque} : Les changements sont persistant selon la durée de vie du processus du SpringBootApplication. Son arrêt entraine la suppression de tout ce qu'il y a dans la RAM}.
+
+\section{Persistance avec base de donnée H2}
+
+La partie suivante consiste à utiliser le controleur JPA pour faire l'interfaçage entre le Java et le SGBD \textbf{H2}. \textbf{H2} est un SGBD écrit entièrmement en Java. Il est destiné au devs et non à la production. De ce point de vue, H2 à des similitudes avec \textbf{SQLite}.
+
+\subsection{Installation}
+
+On va générer un nouveau projet. On reprend les mêmes êtapes précédentes à la diférence des dépendances. On va rajouter les dépéndances \textbf{H2 Database} et \textbf{Spring Data JPA}.
 
 \section{Pourquoi cela ne marche sur IntelliJ ?}
 
