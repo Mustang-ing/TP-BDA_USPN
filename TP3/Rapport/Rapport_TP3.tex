@@ -137,7 +137,7 @@ SpringBot intègre directement Tomcat. On n'a pas besoin de paramétré l'IDE po
     \caption{Illustration du lancement de SpringBoot}
 \end{figure}
 
-Les micros-services doivent être écrit au niveau de \textbf{com.example.[Nom_projet]}. 
+Les micros-services doivent être écrit au niveau de \textbf{com.example.[Nom\_projet]}. 
 
 \begin{figure}[H]
 	\centering
@@ -167,7 +167,7 @@ On définit une nouvelle app via deux annotations primordiales.
 \subsection{Changer le port d'écoute de l'application}
 
 Pour changer le port d'écoute. On modifie le fichier dans \textbf{src/main/ressources/main.properties} et on écrit : \textbf{server.port=9999}
-\end{figure}
+
 
 \subsection{Afficher les informations d'un objet}
 
@@ -184,7 +184,9 @@ On peut afficher les attributs d'un objet en retournant directement l'objet d'un
 
 Plusieurs outils existent pour tester un micro-services (PostMan,DeepLogin,SoapUI). Dans notre cas, je vais utiliser SOAPUI, car il est déjà présent dans ma machine.\newline
 
-Pour tester un micro-services. On va écrire un fonction avec l'entrypoint(\textbf{/somme} qui retourn la somme de deux nombres fourni en paramètre. Au niveau de l'URL, on doit passé les deux paramètre comme-ci : \textbf{/somme?a=1&b=1}. On peut tester manuellement via le navigateur, mais SOAPUI nous permer de le faire via une interface graphique.
+Pour tester un micro-services. On va écrire un fonction avec l'entrypoint(\textbf{/somme} qui retourn la somme de deux nombres fourni en paramètre. Au niveau de l'URL, on doit passé les deux paramètre comme-ci : \verb| \textbf{ /somme?a=1&b=1}|. On peut tester manuellement via le navigateur, mais SOAPUI nous permer de le faire via une interface graphique.
+
+\verb|foo_bar|
 
 \subsection{Etape 1 : Choisir un projet REST}
 
@@ -317,6 +319,10 @@ La partie suivante consiste à utiliser le controleur JPA pour faire l'interfaç
 \subsection{Installation}
 
 On va générer un nouveau projet. On reprend les mêmes êtapes précédentes à la diférence des dépendances. On va rajouter les dépéndances \textbf{H2 Database} et \textbf{Spring Data JPA}.
+
+\textcolor{red}{\textbf{Remarque} : Pour garantir une bonne compatibilité, il faut utiliser JDK 21 avec Java 17}.
+
+
 
 \section{Pourquoi cela ne marche sur IntelliJ ?}
 
