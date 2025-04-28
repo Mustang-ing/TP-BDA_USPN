@@ -22,6 +22,7 @@
 \usepackage{float}      % Add this to your preamble
 \usepackage{placeins}   % Ensures floats do not cross section boundaries
 \usepackage{caption}
+\usepackage{hyperref}
 
 
 
@@ -314,19 +315,80 @@ On peut dans le même esprit écrire des méthodes pour modifier et supprimer un
 
 \section{Persistance avec base de donnée H2}
 
-La partie suivante consiste à utiliser le controleur JPA pour faire l'interfaçage entre le Java et le SGBD \textbf{H2}. \textbf{H2} est un SGBD écrit entièrmement en Java. Il est destiné au devs et non à la production. De ce point de vue, H2 à des similitudes avec \textbf{SQLite}.
+La partie suivante consiste à utiliser le controleur JPA pour faire l'interfaçage entre le Java et le SGBD \textbf{H2}. \textbf{H2} est un SGBD écrit entièrmement en Java. Il est destiné au devs et non à la production. De ce point de vue, H2 à des similitudes avec \textbf{SQLite}. Cette partie à pu marcher avec l'IDE \textbf{InteliJ} (Je ne sais pas pourquoi).
 
 \subsection{Installation}
 
 On va générer un nouveau projet. On reprend les mêmes êtapes précédentes à la diférence des dépendances. On va rajouter les dépéndances \textbf{H2 Database} et \textbf{Spring Data JPA}.
 
-\textcolor{red}{\textbf{Remarque} : Pour garantir une bonne compatibilité, il faut utiliser JDK 21 avec Java 17}.
+\textcolor{red}{\textbf{Remarque} : Pour mon cas, j'ai du utiliser JDK 21 avec Java 17 pour m'assurer que le projet soit compatible avec Maven}.\newline
+
+On va générer deux nouveau package dans \textbf{com.example.h2demo\_tp3}. Le package \textbf{entities} qui représente les entités de notre application. Enfin, le package \textbf{repository}. Ce package permet d'organiser les accès à la base de donnée. 
+
+\subsection{Micro-services avec Hibernate}
+
+Pour écrire notre nouvelle API REST. On va d'abord importer les bibliothèques \textbf{Hibernate} via les modules  \textbf{jakarta.persistance} pour manipuler la base de donnée \textbf{H2}. Il est à noter qu'il existe d'autres contrôleur que \textbf{Hibernate}.\newline
+
+On commence par écrire une classe Java clasique avec ces attributs et méthodes. Dans notre cas, on s'intéresse à un Adhérent. On doit préciser lequel des attributs est une clé primaires avec l'annotation \textbf{@Id}. De  même, la classe \textbf{Adherent} doit être annoté par \textbf{@Entity} pour qu'une table soit généré.\newline
+
+On va ensuite définir une interface AdherentRepository. Cette interface va hériter de \textbf{JpaRepository<Adherent,Long>}. Le 1er paramètre doit être notre entité(Classe) tandis que le deuxième doit être le type de la clé primaire. La déclaration de cette interface va nous fournir un ensemble  d'opérations \textbf{CRUD} (Create,Read,Update,Delete) de base sur nos données. L'avantage est que n'avons plus besoin de générer des méthodes pour manipuler nos entités (Comme vu auparavant). Ces méthodes sont directement généré.\newline
+
+\begin{lstlisting}
+package com.example.h2demo_tp3.repository;
 
 
+import com.example.h2demo_tp3.entities.Adherent;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-\section{Pourquoi cela ne marche sur IntelliJ ?}
+public interface AdherentRepository extends JpaRepository<Adherent, Long>{}
+\end{lstlisting}
 
-J'ai décidé de basculer sur 
+Un exemple de ces bénéfices est la classe [Nom\_projet]Application. Içi, on va pouvoir directement enregistrer des instances d'Adhérent dans la base de donnée en important l'interface. Spring va exécuter la méthode \textbf{runner de type CommandLineRunner} pendant l'exécution. On va ainsi dès le démarage enregistrer 4 adhérents.
+
+\textbf{Rmq : La synataxe \textbf{return -> args {} est une fonction lambda (Anonyme) dans Java}}.\newline
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=15cm]{images/P10_A.png}
+    \caption{Application.java}
+\end{figure}
+
+Pour voir l'ensemble des ces résultats, on doit éditer le fichier \textbf{properties} dans ressources. De cette manière :
+\begin{lstlisting}
+1 spring.application.name=H2demo_TP3
+2 server.port=9191
+3 spring.datasource.url=jdbc:h2:mem:adherent
+4 spring.h2.console.enabled=true
+\end{lstlisting}
+
+La ligne 3, précise l'URL de la JDBC. La ligne 4 active le mode console. C'est-à-dire le GUI du SGBD H2.\newline
+
+Après avoir lancé le serveur, on peut consulter l'interface de H2. Via l'url \href{http://localhost:9191/h2-console}. 
+
+
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P11_A.png}
+\captionof{figure}{On peut appuyer sur \textbf{Test connection} pour tester la connection}
+\label{fig:figure}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=8cm]{images/P9_B.png}
+\captionof{figure}{Interface GUI de H2}
+\label{fig:figure}
+\vspace{1cm}
+\end{minipage}
+
+\vspace{1cm}
+On peut visualiser tous les adhérent avec une requête SQL. 
+
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=5cm]{images/P11_C.png}
+    \caption{Application.java}
+\end{figure}
+
 
 \end{document}
 
